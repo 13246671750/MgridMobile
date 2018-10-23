@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_navigate"
+    android:layout_width="fill_parent"
+    android:layout_height="35dip"
+    android:background="@drawable/main_top_bg"
+    android:gravity="center"      
+    android:orientation="horizontal" >
+        <View  
+            android:layout_width="50dip"  
+            android:layout_height="30dip"  
+             />   
+   <TextView
+            android:id="@+id/pageheadtitlecenter"
+            android:layout_width="wrap_content"
+             android:layout_gravity="center"
+             android:gravity="center"
+            android:layout_height="30dip"     
+            android:text="中"   
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    
+</LinearLayout>
+
+ 

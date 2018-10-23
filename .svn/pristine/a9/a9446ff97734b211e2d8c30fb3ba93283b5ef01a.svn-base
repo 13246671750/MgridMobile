@@ -1,0 +1,855 @@
+package mgrid.software.software.protocol;
+
+import mgrid.software.software.BitConverter;
+import mgrid.software.software.MessageType;
+
+public class RequestEntity {
+
+	public static byte[] getBytes(MessageType msgtype, ConfigType submsgtype,
+			int clientid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+		byte[] buffer = new byte[1024];
+
+		if (msgtype == MessageType.RegisterRequest) {
+			int index = 0;
+			String mobiletype = android.os.Build.MODEL;
+			byte[] tempbyte = BitConverter.getBytes(mobiletype, "UTF-8");
+
+			// head
+			buffer[index] = head;
+			index = index + 1;
+			// length
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+			// clientid
+			System.arraycopy(BitConverter.getBytes(-1), 0, buffer, index, 4);
+			index = index + 4;
+			// checksum
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+			index = index + 2;
+
+			// messagetyype
+			int messagetype = MessageType.RegisterRequest.ordinal();
+			System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer,
+					index, 4);
+			index = index + 4;
+
+			// 保留
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+			// 保留
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+
+			// body
+			System.arraycopy(BitConverter.getBytes(tempbyte.length), 0, buffer,
+					index, 4);
+			index = index + 4;
+
+			System.arraycopy(tempbyte, 0, buffer, index, tempbyte.length);
+			index = index + tempbyte.length;
+
+			byte[] rtnbuffer = new byte[index];
+			System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+			return rtnbuffer;
+
+		} else if (msgtype == MessageType.ConfigRequest) {
+			int index = 0;
+			// head
+			buffer[index] = head;
+			index = index + 1;
+			// length
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+			// clientid
+			System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index,
+					4);
+			index = index + 4;
+			// checksum
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+			index = index + 2;
+
+			// messagetyype
+			int messagetype = MessageType.RegisterRequest.ordinal();
+			System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer,
+					index, 4);
+			index = index + 4;
+
+			// 保留
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+			// 保留
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+
+			// SubMessageType
+
+			System.arraycopy(BitConverter.getBytes(4), 0, buffer, index, 4);
+			index = index + 4;
+
+			int subtype = submsgtype.ordinal();
+			System.arraycopy(BitConverter.getBytes(subtype), 0, buffer, index,
+					4);
+			index = index + 4;
+			byte[] rtnbuffer = new byte[index];
+			System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+			return rtnbuffer;
+		} else {
+			int index = 0;
+			// head
+			buffer[index] = head;
+			index = index + 1;
+			// length
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+			// clientid
+			System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index,
+					4);
+			index = index + 4;
+			// checksum
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+			index = index + 2;
+
+			// messagetyype
+			int messagetype = MessageType.RegisterRequest.ordinal();
+			System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer,
+					index, 4);
+			index = index + 4;
+
+			// 保留
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+			// 保留
+			System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+			index = index + 4;
+
+			byte[] rtnbuffer = new byte[index];
+			System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+			return rtnbuffer;
+
+		}
+
+	}
+
+	public static byte[] GetClientId(String username, String password) {
+		Byte head = 0x7e;
+		int checksum = 0;
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		String mobiletype = android.os.Build.MODEL;
+		byte[] tempbyte = BitConverter.getBytes(mobiletype, "UTF-8");
+		byte[] usernamebyte = BitConverter.getBytes(username, "UTF-8");
+		byte[] passwordbyte = BitConverter.getBytes(password, "UTF-8");
+
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(
+				BitConverter.getBytes(tempbyte.length + 12
+						+ usernamebyte.length + passwordbyte.length), 0,
+				buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(-1), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+		// messagetyype
+		int messagetype = MessageType.RegisterRequest.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+		// 保留字节
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留字节
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// body
+		System.arraycopy(BitConverter.getBytes(tempbyte.length), 0, buffer,
+				index, 4);
+		index = index + 4;
+
+		System.arraycopy(tempbyte, 0, buffer, index, tempbyte.length);
+		index = index + tempbyte.length;
+
+		System.arraycopy(BitConverter.getBytes(usernamebyte.length), 0, buffer,
+				index, 4);
+		index = index + 4;
+
+		System.arraycopy(usernamebyte, 0, buffer, index, usernamebyte.length);
+		index = index + usernamebyte.length;
+
+		System.arraycopy(BitConverter.getBytes(passwordbyte.length), 0, buffer,
+				index, 4);
+		index = index + 4;
+
+		System.arraycopy(passwordbyte, 0, buffer, index, passwordbyte.length);
+		index = index + passwordbyte.length;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	public static byte[] getRoomsWithOverViewDataBytes(int clientid,
+			int stationid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(4), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.RoomsOverViewData.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+	}
+
+	public static byte[] getStationOverViewDataBytes(int clientid, int stationid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(4), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.StationOverView.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	public static byte[] getStationWeatherBytes(int clientid, int stationid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(4), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.StationWeather.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	public static byte[] getEquipmentsWithOverViewDataBytes(int clientid,
+			int stationid, int roomid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(8), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.EquipmentOverViewData.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(roomid), 0, buffer, index, 4);
+		index = index + 4;
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	public static byte[] GetEquipmentAnalogSignalsCfgBytes(int clientid,
+			int stationid, int roomid, int equipmentid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+		int length = 16;
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(16), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.ConfigRequest.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		// messagetyype
+		int subtype = ConfigType.AnalogSignals.ordinal();
+		System.arraycopy(BitConverter.getBytes(subtype), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(roomid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(equipmentid), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	public static byte[] GetEquipmentSwitchSignalsCfgBytes(int clientid,
+			int stationid, int roomid, int equipmentid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(16), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.ConfigRequest.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		// messagetyype
+		int subtype = ConfigType.SwitchSignals.ordinal();
+		System.arraycopy(BitConverter.getBytes(subtype), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(roomid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(equipmentid), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	public static byte[] getAliveEquipmentAlarmsBytes(int clientid,
+			int stationid, int roomid, int equipmentid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(12), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.EquipmentAlarmRequest.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(roomid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(equipmentid), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	public static byte[] getAliveEquipmentAnalogSignalsBytes(int clientid,
+			int stationid, int roomid, int equipmentid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(12), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.AnalogRealSignalRequest.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(roomid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(equipmentid), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+	}
+
+	public static byte[] getAliveEquipmentSwitchSignalsBytes(int clientid,
+			int stationid, int roomid, int equipmentid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(12), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.SwitchRealSignalRequest.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(roomid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(equipmentid), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+
+	
+
+	public static byte[] GetAlarmStaticsBytes(int clientid,int stationid,int year) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(8), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.AlarmStatics.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+		System.arraycopy(BitConverter.getBytes(year), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+	public static byte[] GetPowerOutputDailyBytes(int clientid,int stationid,int year) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(8), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.PowerDaily.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+		
+		System.arraycopy(BitConverter.getBytes(year), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+	public static byte[] GetPowerOutputMonthyBytes(int clientid,int year,int stationid,int roomid,int equipmentid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(16), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.PowerMonthy.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		System.arraycopy(BitConverter.getBytes(year), 0, buffer, index, 4);
+		index = index + 4;
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+		System.arraycopy(BitConverter.getBytes(roomid), 0, buffer, index, 4);
+		index = index + 4;
+		System.arraycopy(BitConverter.getBytes(equipmentid), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+	
+	
+	public static byte[] GetStations(int clientid) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.GetStations.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+	
+	
+	public static byte[] getAliveAlarmsBytes(int clientid, int stationid,
+			int level, int page, int pagesize) {
+		Byte head = 0x7e;
+		int checksum = 0;
+
+		byte[] buffer = new byte[1024];
+
+		int index = 0;
+		// head
+		buffer[index] = head;
+		index = index + 1;
+		// length
+		System.arraycopy(BitConverter.getBytes(16), 0, buffer, index, 4);
+		index = index + 4;
+		// clientid
+		System.arraycopy(BitConverter.getBytes(clientid), 0, buffer, index, 4);
+		index = index + 4;
+		// checksum
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 2);
+		index = index + 2;
+
+		// messagetyype
+		int messagetype = MessageType.AlarmRequest.ordinal();
+		System.arraycopy(BitConverter.getBytes(messagetype), 0, buffer, index,
+				4);
+		index = index + 4;
+
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+		// 保留
+		System.arraycopy(BitConverter.getBytes(0), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(stationid), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(level), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(page), 0, buffer, index, 4);
+		index = index + 4;
+
+		System.arraycopy(BitConverter.getBytes(pagesize), 0, buffer, index, 4);
+		index = index + 4;
+
+		byte[] rtnbuffer = new byte[index];
+		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
+		return rtnbuffer;
+
+	}
+}

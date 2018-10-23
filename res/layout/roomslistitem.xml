@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="horizontal" >  
+  
+   <View 
+            android:layout_width="50dip"  
+            android:layout_height="40dip"  
+             /> 
+    <TextView  
+        android:id="@+id/room_list_id"  
+        android:layout_width="30dip"  
+        android:layout_height="40dip"  
+       android:layout_marginLeft="10dip"  
+        android:textColor="#99FF66"  
+        android:textSize="20sp"
+        />  
+    <View 
+            android:layout_width="50dip"  
+            android:layout_height="40dip"  
+             /> 
+     <TextView  
+        android:id="@+id/room_list_Name"  
+        android:layout_width="250dip"  
+        android:layout_height="wrap_content"  
+        android:textColor="#99FF66"  
+        android:textSize="20sp" 
+        />  
+  
+      
+</LinearLayout>  

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical" >   
+    <include android:id="@+id/item_header" layout="@layout/pageheader" />  
+    <include android:id="@+id/item_header" layout="@layout/navigationheader" />
+	<RadioGroup
+    	    android:id="@+id/signaltab_radio_group"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="20dip"
+    	    android:layout_gravity="top"
+    	    android:background="#664466"
+    	    android:gravity="center_vertical"
+    	    android:orientation="horizontal" >
+    		<RadioButton 
+    			android:text="模拟量" 
+       			android:textSize="11sp" 
+				android:checked="true"
+    			android:id="@+id/signalshosttab_radio_button0"
+      			/>
+    		<RadioButton 
+    			android:text="开关量"   
+    			android:textSize="11sp" 
+				android:id="@+id/signalshosttab_radio_button1"
+    			/>
+    		<RadioButton 
+    			android:text="告警"	
+    			android:textSize="11sp" 
+    			android:id="@+id/signalshosttab_radio_button2"
+      	 		/>
+      
+    	</RadioGroup> 
+        	
+<AbsoluteLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<LinearLayout  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+      android:id="@+id/signals_layout_analog"  
+    android:orientation="vertical" >  
+  
+    <LinearLayout  
+       
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content"  
+        android:orientation="vertical" >  
+  
+        <TextView  
+            android:layout_width="50dip"  
+            android:layout_height="30dip"  
+            android:layout_marginLeft="10dip"
+            android:textColor="#FFFF00" 
+            android:text="序号" 
+            android:textSize="15sp" /> 
+           
+  
+        <TextView  
+            android:id="@+id/rmid"  
+            android:layout_width="130dip"  
+            android:layout_height="30dip" 
+ 				android:textColor="#FFFF00" 
+            android:text="信号名称"  
+             android:textSize="15sp" />  
+  
+        <TextView  
+            android:id="@+id/rmname"  
+            android:layout_width="100dip"  
+            android:layout_height="30dip" 
+             android:textColor="#FFFF00" 
+             android:text="信号值"  
+            android:textSize="15sp" />  
+  
+        <TextView  
+            android:id="@+id/rmvalue"  
+            android:layout_width="80dip"  
+            android:layout_height="30dip" 
+             android:textColor="#FFFF00" 
+            android:text="单位"  
+            android:textSize="15sp" />  
+  
+    </LinearLayout>  
+  
+    <ListView  
+        android:id="@+id/equipment_analog_signallv"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content" 
+        android:cacheColorHint="#00000000">  
+    </ListView>  
+  
+</LinearLayout> 
+<LinearLayout 
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+   android:id="@+id/signals_layout_switch"  
+     
+    android:orientation="vertical" >  
+  
+    <LinearLayout  
+      
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content"  
+        android:orientation="horizontal" >  
+  
+        <TextView  
+            android:layout_width="50dip"  
+            android:layout_height="30dip"  
+            android:layout_marginLeft="10dip"
+            android:textColor="#FFFF00" 
+            android:text="序号" 
+            android:textSize="15sp" /> 
+           
+  
+        <TextView  
+            android:id="@+id/rmid"  
+            android:layout_width="130dip"  
+            android:layout_height="30dip" 
+ 				android:textColor="#FFFF00" 
+            android:text="信号名称"  
+             android:textSize="15sp" />  
+  
+        <TextView  
+               android:id="@+id/rmname"  
+            android:layout_width="100dip"  
+            android:layout_height="30dip" 
+             android:textColor="#FFFF00" 
+             android:text="信号值"  
+            android:textSize="15sp" />    
+    </LinearLayout>  
+  
+    <ListView  
+        android:id="@+id/equipment_switch_signallv"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content" >  
+    </ListView>  
+  
+</LinearLayout> 
+<LinearLayout  
+     android:layout_width="fill_parent"  
+     android:layout_height="fill_parent" 
+     android:id="@+id/signals_layout_alarms"  
+     android:orientation="vertical" >  
+  
+    <LinearLayout  
+        
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content"  
+        android:orientation="horizontal" >  
+  
+        <TextView  
+            android:layout_width="40dip"  
+            android:layout_height="30dip"  
+            android:textColor="#FFFF00" 
+            android:text="序号"  
+            android:textSize="15sp" />   
+        <TextView  
+             android:layout_width="80dip"  
+            android:layout_height="30dip" 
+            android:textColor="#FFFF00" 
+            android:text="等级"  
+            android:textSize="15sp" />   
+        <TextView  
+            android:layout_width="200dip"  
+            android:layout_height="30dip"  
+             android:textColor="#FFFF00" 
+            android:text="告警描述"  
+            android:textSize="15sp" />  
+      
+    </LinearLayout>  
+  
+    <ListView  
+        android:id="@+id/equipment_alarm_signallv"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content" >  
+    </ListView>  
+      </LinearLayout>  
+</AbsoluteLayout>
+  </LinearLayout>  

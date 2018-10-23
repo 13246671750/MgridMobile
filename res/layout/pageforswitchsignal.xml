@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+   android:id="@+id/signals_layout_switch"  
+
+    android:orientation="vertical" >  
+  
+    <LinearLayout  
+
+        android:layout_width="fill_parent"  
+        android:layout_height="30dip"  
+        android:orientation="horizontal"
+         android:background="@drawable/padlistback3" >  
+   
+        <TextView  
+            android:layout_width="40dip"  
+            android:layout_height="30dip"  
+            android:textColor="#000000" 
+             android:gravity="center"
+            android:text="序号" 
+            android:textSize="16sp" /> 
+           
+  
+        <TextView  
+            android:id="@+id/rmid"  
+            android:layout_width="200dip"  
+            android:layout_height="30dip" 
+ 				android:textColor="#000000" 
+ 				    android:gravity="center"
+            android:text="信号名称"  
+             android:textSize="16sp" />  
+ 
+        <TextView  
+            android:id="@+id/rmname"  
+            android:layout_width="80dip"  
+            android:layout_height="30dip" 
+             android:textColor="#000000" 
+             android:gravity="center"
+             android:text="信号值"  
+            android:textSize="16sp" />    
+    </LinearLayout>  
+  
+    <ListView  
+        android:id="@+id/equipment_switch_signallv"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content" 
+        android:cacheColorHint="#00000000" >  
+    </ListView>  
+  
+</LinearLayout> 

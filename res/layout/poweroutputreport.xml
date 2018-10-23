@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout 
+     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/report_gradient_bg"
+  >
+ <LinearLayout  
+    android:id="@+id/navigation"
+    android:layout_width="match_parent"
+    android:layout_height="50dip" 
+    android:gravity="center"
+    android:background="@drawable/padtitle50"
+    android:orientation="horizontal">
+    
+    <LinearLayout    
+    android:layout_width="300dip"
+    android:layout_height="50dip" 
+    android:gravity="center"
+    android:orientation="horizontal">
+     <Button
+         android:id="@+id/subbutton"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="60dip"
+         android:layout_height="40dip"
+         android:gravity="center"
+         android:text="&lt;"
+         android:textColor="#FFFFFF"
+         android:textSize="25sp"
+           android:background="@drawable/report_subbtn_bg" />
+
+       <TextView
+         android:id="@+id/yeartextview"
+         android:layout_width="100dip"
+         android:layout_height="50dip"
+         android:background="@drawable/padtitle50"
+         android:gravity="center"
+         android:text="2012"
+           android:textColor="#FFFFFF"
+         android:textSize="20sp" />
+
+     <Button
+         android:id="@+id/addbutton"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="60dip"
+         android:layout_height="40dip"
+          android:background="@drawable/report_subbtn_bg"
+         android:gravity="center"
+         android:text=">"
+         android:textColor="#FFFFFF"
+         android:textSize="25sp" />
+      <View 
+         android:layout_width="25dip"
+         android:layout_height="50dip"
+        />
+     <Button
+         android:id="@+id/refleshbutton"
+         android:layout_width="60dip"
+         android:layout_height="40dip"     
+         android:gravity="center"
+         android:text="更新"
+          android:background="@drawable/report_btn_bg"
+         android:textColor="#000000"
+         android:textSize="12sp" />
+      </LinearLayout>
+    </LinearLayout>  
+    
+	   <LinearLayout
+     	     android:id="@+id/poweroutputchart"
+   			 android:layout_width="match_parent"
+   			 android:layout_height="match_parent"		
+   			 android:orientation="vertical"
+   			 android:background="@drawable/report_gradient_bg"
+ >  		    
+	  </LinearLayout>
+	
+</LinearLayout>

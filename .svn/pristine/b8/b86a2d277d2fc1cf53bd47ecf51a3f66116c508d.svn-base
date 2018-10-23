@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/navigation"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:background="@drawable/padtitle50"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/navigationstation"
+            android:layout_width="fill_parent"
+            android:layout_height="30dip"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="#ffffff"
+            android:textSize="20sp" >
+        </TextView>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dip"
+        android:layout_height="170dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip"
+        android:layout_weight="0.07"
+        android:background="@drawable/padlistback3"
+        android:orientation="vertical" >
+"
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="170dip"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="服务器IP地址:   "
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/serveripeditText"
+            android:layout_width="170dip"
+            android:layout_height="60dip"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="220.231.192.87" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="170dip"
+            android:layout_height="60dip"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="服务器端口:   "
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/serverporteditText"
+            android:layout_width="170dip"
+            android:layout_height="60dip"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="9601" >
+        </EditText>
+
+        <View
+            android:layout_width="170dip"
+            android:layout_height="10dip" />
+
+        <Button
+            android:id="@+id/ifrefreshbutton"
+            android:layout_width="170dip"
+            android:layout_height="40dip"
+            android:layout_gravity="center"
+            android:text="更新 "
+            android:textSize="16sp" />
+    </LinearLayout>
+    <!--
+    <TextView
+              android:id="@+id/textView1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+                android:textColor="#FFFF00" 
+              android:textSize="20sp"
+              android:text="告警推送功能" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+   
+    <RadioGroup  android:id="@+id/radioButtonrunmodel"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      <RadioButton
+        android:id="@+id/radioButtonrun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="启用" />
+         <RadioButton
+        android:id="@+id/radioButtondemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关闭" />
+     </RadioGroup>>
+    </LinearLayout>
+      <Button
+          android:id="@+id/logout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="事件通知测试" />
+    -->
+</LinearLayout>

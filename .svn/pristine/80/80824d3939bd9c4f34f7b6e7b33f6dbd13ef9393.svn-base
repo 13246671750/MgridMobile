@@ -1,0 +1,24 @@
+package mgrid.software.software;
+
+import mgrid.software.software.R;
+
+public enum MessageType {
+
+		RealSignalRequest,
+		RegisterRequest,
+		AlarmRequest,
+        ReportRequest,
+        ConfigRequest,
+        CustomConfig,
+        AnalogRealSignalRequest,
+        SwitchRealSignalRequest,
+        EquipmentAlarmRequest,
+        AlarmStatics,
+        PowerDaily,
+        PowerMonthy,
+        StationOverView,
+        StationWeather,
+        RoomsOverViewData,
+        EquipmentOverViewData,
+        GetStations    
+	}

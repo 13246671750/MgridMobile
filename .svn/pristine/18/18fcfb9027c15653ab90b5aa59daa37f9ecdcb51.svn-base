@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical">
+  <LinearLayout 
+    android:id="@+id/navigation"
+    android:layout_width="fill_parent"
+    android:layout_height="35dip"
+  
+    android:background="@drawable/padtitle50"
+    android:orientation="horizontal">
+
+ 
+     <TextView
+        android:id="@+id/pageheadtitlecenter"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+           android:gravity="center"
+           android:textColor="#ffffff"
+           android:textSize="20sp"         
+           android:text="报表">
+    </TextView> 
+      <TextView
+        android:id="@+id/navigationroom"
+        android:layout_width="wrap_content"
+        android:layout_height="50dip"
+           android:layout_gravity="center"
+           android:textColor="#ffffff"
+           android:textSize="35sp"
+             android:layout_weight="1"
+        android:text="        ">
+    </TextView> 
+    </LinearLayout>   
+       <LinearLayout  
+        xmlns:android="http://schemas.android.com/apk/res/android"  
+        android:layout_width="fill_parent"  
+        android:layout_height="32dip" 
+         
+        android:orientation="horizontal"
+           android:background="@drawable/padtitle32" >  
+   
+        <TextView  
+            android:layout_width="40dip"  
+            android:layout_height="25dip"  
+            android:gravity="center"
+            android:textColor="#FFFFFF" 
+            android:text="序号" 
+            android:textSize="16sp" /> 
+         <View
+      		 
+       		 android:layout_width="50dip"
+       		 android:layout_height="5dip"
+       		 android:gravity="center"
+       		/>
+        <TextView  
+            android:id="@+id/rmid"  
+            android:layout_width="fill_parent"  
+            android:layout_height="25dip"  
+            android:text="报表名称" 
+             android:gravity="center"       
+            android:textColor="#FFFFFF" 
+            android:textSize="16sp" />  
+    
+    </LinearLayout>  
+            <View
+      		 android:id="@+id/inter"
+       		 android:layout_width="fill_parent"
+       		 android:layout_height="5dip"
+       		 android:gravity="center"
+       		/>
+    <ListView  
+        android:id="@+id/reportlistlv"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content" 
+        android:cacheColorHint="#00000000">  
+    </ListView>  
+  
+</LinearLayout> 

@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="80dip"
+      android:orientation="horizontal" 
+     >
+ 	 <LinearLayout
+      	  android:layout_width="70dip"
+      	  android:layout_height="60dip"
+       	  android:gravity="center"
+       	  android:orientation="horizontal" >
+   		 <TextView
+       		 android:id="@+id/active_alarm_id"
+       		 android:layout_width="30dip"
+       		 android:layout_height="80dip"
+     		 android:gravity="center"
+      		 android:text="1"
+      		 android:textSize="14sp"
+      		  android:textColor="#FFFFFF"/>
+    	<ImageView
+      		 android:id="@+id/active_alarm_level"
+       		 android:layout_width="40dip"
+       		 android:layout_height="20dip"
+       		 android:src="@drawable/eventseverity4"
+       		 
+    	  />
+    </LinearLayout>
+      		<LinearLayout
+       			 android:layout_width="wrap_content"
+      			  android:layout_height="80dip"
+       			 android:orientation="vertical">"
+       		<View        		
+          		  android:layout_width="5dip"            
+         		   android:layout_height="5dip"/>     
+         
+			   <TextView
+         		   android:id="@+id/active_alarm_starttime"
+          		  android:layout_width="140dip"            
+         		   android:layout_height="wrap_content"
+            		  android:text="2012-11-1 11:23:12"
+            	
+         		   android:textSize="14sp" 
+         		   android:textColor="#FFFFFF"/>     
+         	   <TextView
+          		  android:id="@+id/active_alarm_descript"
+           		 android:layout_width="wrap_content"
+          		 android:layout_height="wrap_content"
+          		
+           		 android:text="市电停电"
+           		  android:textSize="14sp"
+           		  android:textColor="#FFFFFF" />
+         	
+         	    <TextView
+          		  android:id="@+id/active_alarm_position"
+           		 android:layout_width="wrap_content"
+         		   android:layout_height="wrap_content"        		        	
+          		  android:text="深圳市科技园南山区"
+          		   android:textSize="14sp" 
+          		   android:textColor="#FFFFFF"/>
+        	  </LinearLayout>
+
+</LinearLayout>  

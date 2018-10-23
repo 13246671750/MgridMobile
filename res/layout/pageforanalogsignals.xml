@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+      android:id="@+id/signals_layout_analog"  
+    android:orientation="vertical"
+     >  
+  
+    <LinearLayout  
+        
+        android:layout_width="fill_parent"  
+        android:layout_height="30dip"  
+        android:orientation="horizontal"
+        android:background="@drawable/padlistback3">"
+         <TextView  
+            android:layout_width="40dip"  
+            android:layout_height="30dip"  
+            android:gravity="center"  
+            android:textColor="#000000" 
+            android:text="序号" 
+            android:textSize="16sp" /> 
+           
+   
+        <TextView  
+             android:layout_width="140dip"  
+            android:layout_height="30dip" 
+ 				android:textColor="#000000" 
+             android:text="信号名称"  
+             android:gravity="center"
+             android:textSize="16sp" />  
+  
+        <TextView  
+            android:layout_width="80dip"  
+            android:layout_height="30dip" 
+             android:textColor="#000000" 
+             android:text="信号值"  
+              android:gravity="center"
+            android:textSize="16sp" />  
+    
+        <TextView  
+             android:layout_width="60dip"  
+            android:layout_height="30dip" 
+             android:textColor="#000000" 
+            android:text="单位"  
+             android:gravity="center"
+            android:textSize="16sp" />  
+  
+    </LinearLayout>  
+  
+    <ListView  
+        android:id="@+id/equipment_analog_signallv"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content" 
+        android:cacheColorHint="#00000000" >  
+    </ListView>  
+  
+</LinearLayout> 

@@ -1,0 +1,47 @@
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_width="240dip"
+       android:layout_height="50dip"
+       android:background="@drawable/padzonglangbackground396_88"
+       android:orientation="horizontal" >
+  
+     <View   
+        android:layout_width="20dip"  
+        android:layout_height="50dip"   
+     />
+   <ImageView  
+        android:id="@+id/icon"  
+        android:layout_width="30dip"  
+        android:layout_height="30dip" 
+		android:layout_gravity="center" 
+         android:src="@drawable/powermeter2"/>
+    <View  
+        android:id="@+id/kongge"  
+        android:layout_width="30dip"  
+        android:layout_height="30dip"  
+        	android:layout_gravity="center"  
+        />
+     <LinearLayout
+  		  android:layout_width="fill_parent"
+  		  android:layout_height="50dip"  
+   		 android:orientation="vertical"
+     >  
+     <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="20dip"    
+         android:layout_gravity="center"
+        android:text="光照强度"
+        android:textColor="#000000"
+        android:textSize="16sp"/>
+     <TextView  
+        android:id="@+id/value" 
+        android:layout_gravity="center"      
+        android:layout_width="wrap_content"  
+        android:layout_height="30dip"     
+        android:textColor="#44B238"  
+        android:text="--"
+        
+        android:textSize="16sp" 
+     />  
+  </LinearLayout>  
+  </LinearLayout>  

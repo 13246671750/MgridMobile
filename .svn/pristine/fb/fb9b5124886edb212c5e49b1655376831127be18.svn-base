@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation"
+    android:layout_width="fill_parent"
+   android:layout_height="35dip"
+    android:background="@drawable/main_top_bg"
+    android:orientation="horizontal">
+        <View  
+            android:layout_width="50dip"  
+            android:layout_height="30dip"  
+             />   
+    <TextView
+        android:id="@+id/navigationstation"
+        android:layout_width="wrap_content"
+         android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:text="厂站名称"
+        android:textSize="16sp">
+    </TextView>
+     <TextView
+        android:id="@+id/navigationText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:textColor="#ffffff"
+         android:textSize="16sp"
+        android:text="  >>  ">
+
+    </TextView>
+     <TextView
+        android:id="@+id/navigationroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+           android:layout_gravity="center"
+     
+           android:textColor="#ffffff"
+           android:textSize="16sp"
+ 
+        android:text="发电阵列">
+
+    </TextView>
+     <TextView
+        android:id="@+id/navigationText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+           android:layout_gravity="center"
+     
+           android:textColor="#ffffff"
+           android:textSize="16sp"
+ 
+      android:text="  >>  ">
+
+    </TextView>
+     <TextView
+        android:id="@+id/navigationequipment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+           android:layout_gravity="center"
+     
+           android:textColor="#ffffff"
+           android:textSize="16sp"
+ 
+        android:text="设备">
+ 
+    </TextView>
+ 
+</LinearLayout>

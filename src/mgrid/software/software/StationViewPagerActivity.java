@@ -243,14 +243,13 @@ public class StationViewPagerActivity extends Activity implements Runnable{
 		   		   break;*/
 		   		
 		   			case 0:
-		   			{
-		   				DataAccess.GetStations(DataAccess.clientid);
-		   				
+		   			
+		   				DataAccess.GetStations(DataAccess.clientid);		   				
 			   			lvrooms.setVisibility(View.GONE);
 			   			((BaseAdapter)adapter).notifyDataSetChanged();	
 					    lvrooms.setVisibility(View.VISIBLE);
 					    break;
-		   			}   		
+		   			  		
 		   	    }
 	   	    }
 	     };

@@ -558,6 +558,7 @@ import android.widget.TextView;
 			     }else if (currIndex == 3) {
 				     animation = new TranslateAnimation(four, three, 0, 0);
 				     }
+			     
 			     break;
 		     case 3:
 			     if (currIndex == 0) {

@@ -10,14 +10,14 @@
          android:targetSdkVersion="15"/>
 
     <application
-        android:icon="@drawable/ic_jiqiren"
-        android:label="手机监控"
-        android:logo="@drawable/ic_jiqiren"
+        android:icon="@drawable/zst"
+        android:label="真视通监控"
+        android:logo="@drawable/zst"
         android:allowBackup="false">"
     
      <activity
             android:name=".LoginActivity"
-            android:label="手机监控"
+            android:label="真视通"
              android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

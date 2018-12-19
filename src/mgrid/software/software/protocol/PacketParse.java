@@ -771,11 +771,12 @@ public class PacketParse {
 		 for (int i = 0; i < buffer.length; i++) {
 			 sb.append(buffer[i]);
 		 }
-		 System.out.println("我的数据："+sb.toString());
+		 Log.e("我的数据：",sb.toString());
 	    	   
 	     int  index =PacketParse.headsize;
-	     int  totaldata=BitConverter.getInt(buffer, index);
-	     System.out.println("totaldata:"+totaldata);
+	     int  totaldata=BitConverter.getInt(buffer, index);	    
+	     Log.e("totaldata:",totaldata+"");
+	     
 	     index =index +4;
 	     
 	     for(int i=0;i<totaldata;i++)
@@ -787,24 +788,34 @@ public class PacketParse {
        		 index =index +4;
        		
        		 String name=BitConverter.getUTF8String(buffer, index, len);
-       		 
-       		 
+       		      		 
        		 index = index + len;
        		 int type=BitConverter.getInt(buffer, index);
        		 index =index +4;
        		 
        		
-       		
+       		 /*
+       		  * 定制  只显示想显示的数据
+       		  * 
+       		  * if(name.equals("四川资阳市雁江区机房2"))
+       		  {
        			 map.put("seq", i);
-          		 map.put("id", id);
-          		 map.put("name", name);
-          		 map.put("type", type);
-          		 map.put("image", R.drawable.padroom);
-          		 DataAccess.stations.add(map);
-       		 
-       		
-       		 
-      		//DataAccess.stations.add(map);
+         		 map.put("id", id);
+         		 map.put("name", name);
+         		 map.put("type", type);
+         		 map.put("image", R.drawable.padroom);
+         		 DataAccess.stations.add(map);
+       		  }
+       		  * 
+       		  */
+
+       		 map.put("seq", i);
+     		 map.put("id", id);
+     		 map.put("name", name);
+     		 map.put("type", type);
+     		 map.put("image", R.drawable.padroom);      		 
+      		 DataAccess.stations.add(map);
+      		 
 	     }	   
      }
   	 

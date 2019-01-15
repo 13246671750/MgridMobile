@@ -37,6 +37,7 @@ import android.widget.Toast;
 	 public static boolean inLoginactivetiy=false;
 	 public static boolean bExit=false;
 	 public static int stationid=1;
+	 public static int parentId;
 	 public static String stationname="";
 	 public static int roomid=0;
 	 public static int totalalarm=0;
@@ -102,6 +103,9 @@ import android.widget.Toast;
 	
 
 	public static ArrayList<HashMap<String,Object>> stations= new ArrayList<HashMap<String,Object>>();
+	public static ArrayList<HashMap<String,Object>> parents = new ArrayList<HashMap<String,Object>>();
+	public static HashMap<Integer,ArrayList<HashMap<String,Object>>> parentMap = new HashMap<>();
+	
 	
 	public static void  DeepCopy(List<Map<String,Object>> source,List<Map<String,Object>> des)
 	{
@@ -597,7 +601,7 @@ import android.widget.Toast;
 	    	for (int i = 0; i < receive.length; i++) {
 	    		sb.append(receive[i]);
 			}
-	    	System.out.println("数据:"+sb.toString());
+	    	//System.out.println("数据:"+sb.toString());
 	    	
 	    	if(receive!=null)
 	    	{
@@ -664,7 +668,7 @@ import android.widget.Toast;
 				     int index=0;
 		   	    	 while(in.read(receivetemp, index, 1)==1)
 		    	     {
-		   	    		System.out.println(",,我进来了");
+		   	    		//System.out.println(",,我进来了");
 		   	    	    index=index+1;
 		    		    if(receivetemp[0]==0x7e)
 		    		    {
@@ -707,7 +711,7 @@ import android.widget.Toast;
 		    		  socket.close();
 		    	  }
 		    	 
-		    	  System.out.println(",,我出去了");
+		    	 // System.out.println(",,我出去了");
 		    	  
 		    	  return rtnbuff;
 	    	

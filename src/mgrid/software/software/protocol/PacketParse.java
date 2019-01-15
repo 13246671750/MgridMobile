@@ -767,15 +767,18 @@ public class PacketParse {
 		 }
 		  
 	  	 DataAccess.stations.clear();
+	  	 DataAccess.parents.clear();
+	  	 DataAccess.parentMap.clear();
+	  	 
 	  	 StringBuffer sb=new StringBuffer();
 		 for (int i = 0; i < buffer.length; i++) {
-			 sb.append(buffer[i]);
+			 sb.append(buffer[i]+",");
 		 }
-		 Log.e("我的数据：",sb.toString());
+		 Log.e("parseStationData+我的数据：",sb.toString());
 	    	   
 	     int  index =PacketParse.headsize;
 	     int  totaldata=BitConverter.getInt(buffer, index);	    
-	     Log.e("totaldata:",totaldata+"");
+	     Log.e("parseStationData+totaldata:",totaldata+"");
 	     
 	     index =index +4;
 	     
@@ -794,6 +797,9 @@ public class PacketParse {
        		 index =index +4;
        		 
        		
+       		 int parentId=BitConverter.getInt(buffer, index);
+      		 index =index +4;
+       		 
        		 /*
        		  * 定制  只显示想显示的数据
        		  * 
@@ -809,12 +815,37 @@ public class PacketParse {
        		  * 
        		  */
 
+       		 
+      		// Log.e("parseStationData+parentId", parentId+"");
+       		// Log.e("parseStationData+id", id+"");
+       		 
        		 map.put("seq", i);
+       		 map.put("parentId", parentId);
      		 map.put("id", id);
      		 map.put("name", name);
      		 map.put("type", type);
-     		 map.put("image", R.drawable.padroom);      		 
-      		 DataAccess.stations.add(map);
+     		 map.put("image", R.drawable.padroom);      
+     		 
+     		 if(parentId==0)
+     		 {
+     			 DataAccess.parents.add(map);
+     			 
+     		 }else
+     		 {
+     			ArrayList<HashMap<String, Object>> listData=DataAccess.parentMap.get(parentId);
+     	
+     			
+     			if(listData==null)
+     			{
+     				listData=new ArrayList<>();
+     				DataAccess.parentMap.put(parentId, listData);
+     			}
+     			    			
+     			listData.add(map);
+     			//DataAccess.stations.add(map);
+     			 
+     		 }
+      		
       		 
 	     }	   
      }

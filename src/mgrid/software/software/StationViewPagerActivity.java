@@ -1,6 +1,7 @@
 package mgrid.software.software;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
@@ -72,6 +73,8 @@ public class StationViewPagerActivity extends Activity implements Runnable{
     ListAdapter adapter;
     static int viewpagerindex=0;
     private boolean bfirst=true;
+    private ArrayList<HashMap<String, Object>>  data=new ArrayList<>();
+    
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,15 +98,10 @@ public class StationViewPagerActivity extends Activity implements Runnable{
 		  		
 		  	lvrooms = (ListView) layout2.findViewById(R.id.stationlv);       
 		  	
-		  	adapter = new SimpleAdapter(this, DataAccess.stations, 
-            R.layout.pageforstationlistitem,  
-            new String[] {"image", "name"}, 
-            new int[] { R.id.station_ItemImage, R.id.station_list_Name} 
-		  	);
-		  	
-		  	lvrooms.setAdapter(adapter);          
-		  	lvrooms.setOnItemClickListener(itemListener);
-     	     registerForContextMenu(lvrooms);
+		  	data= DataAccess.parents;
+		  	setAdapter(data);
+		 
+     	    registerForContextMenu(lvrooms);
      	    //InitImageView();
 	        //View v1=findViewById(R.id.navigationstation);    
 	        //v1.setOnClickListener(naigationclick);
@@ -114,6 +112,19 @@ public class StationViewPagerActivity extends Activity implements Runnable{
      	     //lvstation = (ListView)layout1.findViewById(R.id.lv);  
      	     //lvstation.setAdapter(adapterstation);  
 	}
+    
+    
+    private void setAdapter(ArrayList<HashMap<String, Object>> datas)
+    {
+     	adapter = new SimpleAdapter(getApplicationContext(),datas, 
+                R.layout.pageforstationlistitem,  
+                new String[] {"image", "name"}, 
+                new int[] { R.id.station_ItemImage, R.id.station_list_Name} 
+    		  	);
+    		  	
+    		  	lvrooms.setAdapter(adapter);          
+    		  	lvrooms.setOnItemClickListener(itemListener);
+    }
     
 	public void run() {
 	
@@ -148,20 +159,43 @@ public class StationViewPagerActivity extends Activity implements Runnable{
 				long id) {
 			try
 			{
-				DataAccess.stationid=(Integer) DataAccess.stations.get(position).get("id");
-				DataAccess.stationname= (String)DataAccess.stations.get(position).get("name");
-
-				Intent intent= new Intent(StationViewPagerActivity.this,RoomsActivity.class);
-			 		 
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);			   
-				Window w=RealtimeActivityGroup.rtgroup.getLocalActivityManager().startActivity("实时信号", intent);
 				
-				View view1=w.getDecorView();
-				RealtimeActivityGroup.rtgroup.setContentView(view1);     
-				RealtimeActivityGroup.activityindex=1;	
+				DataAccess.parentId=(Integer)data.get(position).get("parentId");
+				
+				if(DataAccess.parentId==0)
+				{
+					
+					int id_qy=(int) DataAccess.parents.get(position).get("id");
+					
+					data=DataAccess.parentMap.get(id_qy);
+								
+				  	setAdapter(data);
+				
+					lvrooms.setVisibility(View.GONE);
+		   			((BaseAdapter)adapter).notifyDataSetChanged();	
+				    lvrooms.setVisibility(View.VISIBLE);
+					
+				}else
+				{
+					
+					DataAccess.stationid=(Integer)data.get(position).get("id");
+					DataAccess.stationname= (String)data.get(position).get("name");
+					Intent intent= new Intent(StationViewPagerActivity.this,RoomsActivity.class);			 		 
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);			   
+					Window w=RealtimeActivityGroup.rtgroup.getLocalActivityManager().startActivity("实时信号", intent);					
+					View view1=w.getDecorView();
+					RealtimeActivityGroup.rtgroup.setContentView(view1);     
+					RealtimeActivityGroup.activityindex=1;	
+					
+				}
+
+			
 			}
 			catch(Exception e)
-			{}
+			{
+				
+				e.printStackTrace();
+			}
 		}
 	};
 	

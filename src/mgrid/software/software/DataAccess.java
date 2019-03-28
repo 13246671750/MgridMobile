@@ -276,7 +276,7 @@ import android.widget.Toast;
 						for (int i = 0; i < receive.length; i++) {
 							sb.append(receive[i]);
 						}
-						System.out.println("收到数据："+sb.toString());
+						//System.out.println("收到数据："+sb.toString());
 					 
 				} catch (Exception e) {
 		 
@@ -824,7 +824,7 @@ import android.widget.Toast;
 	    	byte[] receive=null;
 		    	
 	    	
-	    	System.out.println("数字："+DataAccess.clientid+":"+stationid+":"+roomid+":"+equipmentid);
+	    	//System.out.println("数字："+DataAccess.clientid+":"+stationid+":"+roomid+":"+equipmentid);
 		    try {
 				 receive=SendAndReceive(RequestEntity.getEquipmentCommandBytes(DataAccess.clientid, stationid,roomid,equipmentid));
 			} catch (Exception e) { 

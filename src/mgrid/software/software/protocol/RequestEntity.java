@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
 import mgrid.software.software.BitConverter;
 import mgrid.software.software.DataAccess;
 import mgrid.software.software.MessageType;
@@ -380,7 +381,8 @@ public class RequestEntity {
 		for (int i = 0; i < rtnbuffer.length; i++) {
 			sb.append(rtnbuffer[i]);
 		}
-		System.out.println("请求数据："+sb.toString());
+		//System.out.println("请求数据："+sb.toString());
+		//Log.e("请求数据", sb.toString());
 		return rtnbuffer;
 
 	}
@@ -676,7 +678,7 @@ public class RequestEntity {
 		
 		System.arraycopy(buffer, 0, rtnbuffer, 0, index);
 		
-		System.out.println("总长度"+rtnbuffer.length);
+		//System.out.println("总长度"+rtnbuffer.length);
 		
 		return rtnbuffer;
 	}

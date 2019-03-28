@@ -10,14 +10,13 @@
          android:targetSdkVersion="21"/>
 
     <application
-        android:icon="@drawable/zst"
-        android:label="真视通监控"
-        android:logo="@drawable/zst"
+        android:icon="@drawable/yidunloge"
+        android:label="Monitor"
+        android:logo="@drawable/yidunloge"
         android:allowBackup="false">"
     
      <activity
             android:name=".LoginActivity"
-            android:label="真视通"
              android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

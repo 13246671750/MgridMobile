@@ -305,7 +305,7 @@ import android.widget.TextView;
 	   		  switch(pageindex)
 	   		  {
 	   		  case 0:
-	   			System.out.println("数字0");
+	   			//System.out.println("数字0");
 	   			DataAccess.GetRealTimeAnalogSignals(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid);	
 	   			
 	   	   		lvanalog.setVisibility(View.GONE);	
@@ -313,7 +313,7 @@ import android.widget.TextView;
 			    lvanalog.setVisibility(View.VISIBLE);
 	   			  break;
 	   		  case 1:
-	   			System.out.println("数字1");
+	   			//System.out.println("数字1");
 	   			DataAccess.GetRealTimeSwitchSignals(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid);	
 	   			
 	   			lvswitch.setVisibility(View.GONE);		
@@ -321,7 +321,7 @@ import android.widget.TextView;
 	   			lvswitch.setVisibility(View.VISIBLE);
 	   			  break;
 	   		  case 2:
-	   			System.out.println("数字2");
+	   			//System.out.println("数字2");
 	   			DataAccess.GetEquipmentActiveAlarm(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid);	
 	   			
 	   			lvalarm.setVisibility(View.GONE);
@@ -330,7 +330,7 @@ import android.widget.TextView;
 	   			  break;
 	   			  
 	   		  case 3:
-	   			System.out.println("数字3");
+	   			//System.out.println("数字3");
 	   			DataAccess.context=getApplicationContext();
 		   		DataAccess.GetEquipmentCommand(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid);	
 		   			

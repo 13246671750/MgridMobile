@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FF808080"
+    android:background="#6C8BA0"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bgloge"
+        android:background="@drawable/yidunbg"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -38,7 +38,7 @@
                     android:layout_width="87dip"
                     android:layout_height="30dip"
                     android:text="用 户 名:"
-                    android:textColor="#000000"
+                    android:textColor="#086BC0"
                     android:textSize="16sp" />
 
                 <AutoCompleteTextView
@@ -63,7 +63,7 @@
                     android:layout_width="87dip"
                     android:layout_height="25dip"
                     android:text="密      码:"
-                    android:textColor="#000000"
+                    android:textColor="#086BC0"
                     android:textSize="16sp" />
 
                 <EditText
@@ -88,7 +88,7 @@
                     android:layout_width="87dip"
                     android:layout_height="30dip"
                     android:text="服务器IP:"
-                    android:textColor="#000000"
+                    android:textColor="#086BC0"
                     android:textSize="16sp" />
 
                 <EditText
@@ -113,7 +113,7 @@
                     android:layout_width="87dip"
                     android:layout_height="25dip"
                     android:text="服务器端口:"
-                    android:textColor="#000000"
+                    android:textColor="#086BC0"
                     android:textSize="16sp" />
 
                 <EditText
@@ -155,7 +155,7 @@
                     android:layout_marginLeft="3dip"
                     android:button="@drawable/qq_btn_check"
                     android:text="记住密码"
-                    android:textColor="#000000"
+                    android:textColor="#086BC0"
                     android:textSize="13dip" />
 
                 <Button
@@ -164,6 +164,7 @@
                     android:layout_height="50dip"
                     android:layout_gravity="center"
                     android:shadowColor="#62b048"
+                    android:background="#64A9DD"
                     android:text="登  录"
                     android:textSize="14sp" />
             </LinearLayout>

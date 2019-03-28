@@ -938,6 +938,7 @@ public class PacketParse {
        		 {
        			 
        			 map.put("image",R.drawable.padequipment);
+       			 
        		 }
        		 else if(type==1)
        		 {
@@ -956,7 +957,36 @@ public class PacketParse {
        		 }
        		 else
        		 {
-       			 map.put("image",R.drawable.device);
+       			 
+       			 if(strName.contains("UPS"))
+       			 {
+       				 map.put("image",R.drawable.ups1);
+       			 }else if(strName.contains("空调"))
+       			 {
+       				 map.put("image",R.drawable.aircon2);
+       			 }else if(strName.contains("温湿度"))
+       			 {
+       				 map.put("image",R.drawable.wsd);
+       			 }else if(strName.contains("漏水"))
+       			 {
+       				 map.put("image",R.drawable.shuijin3);
+       			 }else if(strName.contains("烟感"))
+       			 {
+       				 map.put("image",R.drawable.smoke);
+       			 }else if(strName.contains("电池"))
+       			 {
+       				 map.put("image",R.drawable.xdc);
+       			 }else if(strName.contains("电表"))
+       			 {
+       				 map.put("image",R.drawable.meter);
+       			 }else {
+       				 
+       				 map.put("image",R.drawable.device);
+       				 
+       			 }
+       				   
+       			 
+       			
        		 }
        		 
        		 DataAccess.equipmentslisttitems.add(map);
@@ -1137,7 +1167,7 @@ public class PacketParse {
 		   JsonText+=str;
 	   }   	   		
 	   
-	   System.out.println(JsonText);
+	  // System.out.println(JsonText);
 	   
 	   if(JsonText!=null&&!JsonText.equals("[]"))
 	   {
@@ -1147,7 +1177,7 @@ public class PacketParse {
 		   HashMap<String,Object> map= new  HashMap<String,Object>();
 		   String  Name=(String) jsonObject.get("Name");
 		   int  ParameterValue=(Integer) jsonObject.get("ParameterValue");
-		   System.out.println(Name+"......"+ParameterValue);
+		 //  System.out.println(Name+"......"+ParameterValue);
 		   if((Name.equalsIgnoreCase("s1")||Name.equalsIgnoreCase("s2")||Name.equalsIgnoreCase("s3")))
 		   {
 			   map.put("Seq", i+1);

@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TabHost xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@android:id/tabhost"
+    android:id="@android:id/tabhost"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFA3A3A3"
-    >
+    android:background="#FFA3A3A3" >
+
     <LinearLayout
-    	android:orientation="vertical"
-    	android:layout_width="fill_parent"
-    	android:layout_height="fill_parent">
-    	<FrameLayout 
-    		android:id="@android:id/tabcontent"
-    		android:layout_width="fill_parent"
-    		android:layout_height="0.0dip"
-    		android:layout_weight="0.1"/>
-    	<TabWidget 
-    		android:id="@android:id/tabs"
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:layout_weight="0.0"
-    		android:visibility="gone"/>
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
 
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="0.1" />
 
-    	<RadioGroup
-    	    android:id="@+id/main_tab"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="65dip"
-    	    android:layout_gravity="bottom"
-    	    android:background="@drawable/maintab_toolbar_bg"
-    	    android:gravity="center_vertical"
-    	    android:orientation="horizontal" >
-    		<RadioButton 
-    			android:text="@string/menu_realtime"
-    			android:textSize="11sp"    		
-    			android:drawableTop="@drawable/realtime36"    		 
-    			android:id="@+id/radio_button1"
-    			style="@style/main_tab_bottom"
-    			android:textColor="#4D5464"/>
-    		<RadioButton 
-    			android:text="@string/menu_alarm"
-    			android:textSize="11sp" 
-    			android:drawableTop="@drawable/alarm36"
-    			android:id="@+id/radio_button2"
-    			style="@style/main_tab_bottom"
-    			android:textColor="#4D5464"/>
-    		<RadioButton 
-    			android:textSize="11sp"
-    			android:text="@string/menu_more"
-    			android:drawableTop="@drawable/settings36"
-    			android:id="@+id/radio_button4"
-    			style="@style/main_tab_bottom"
-    			android:textColor="#4D5464"/>
-    		<RadioButton
-    		    android:id="@+id/radio_button3"
-    		    style="@style/main_tab_bottom"
-    		    android:drawableTop="@drawable/exit"
-    		    android:text="@string/menu_report"
-    		    android:textColor="#4D5464"
-    		    android:textSize="11sp"/>
-    	</RadioGroup>
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:visibility="gone" />
+
+        <RadioGroup
+            android:id="@+id/main_tab"
+            android:layout_width="match_parent"
+            android:layout_height="65dip"
+            android:layout_gravity="bottom"
+            android:background="@drawable/maintab_toolbar_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radio_button1"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/realtime36"
+                android:text="@string/menu_realtime"
+                android:textColor="#4D5464"
+                android:textSize="11sp" />
+
+            <RadioButton
+                android:id="@+id/radio_button2"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/alarm36"
+                android:text="@string/menu_alarm"
+                android:textColor="#4D5464"
+                android:textSize="11sp" />
+
+            <RadioButton
+                android:id="@+id/radio_button4"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/settings36"
+                android:text="@string/menu_more"
+                android:textColor="#4D5464"
+                android:textSize="11sp" />
+
+            <RadioButton
+                android:id="@+id/radio_button3"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/exit"
+                android:text="@string/menu_report"
+                android:textColor="#4D5464"
+                android:textSize="11sp" />
+        </RadioGroup>
     </LinearLayout>
+
 </TabHost>

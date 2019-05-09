@@ -98,7 +98,7 @@ public class StationViewPagerActivity extends Activity implements Runnable{
 		  		
 		  	lvrooms = (ListView) layout2.findViewById(R.id.stationlv);       
 		  	
-		  	data= DataAccess.parents;
+		    data=DataAccess.parents;
 		  	setAdapter(data);
 		 
      	    registerForContextMenu(lvrooms);
@@ -243,7 +243,7 @@ public class StationViewPagerActivity extends Activity implements Runnable{
 	   	   //当有消息发送出来的时候就执行Handler的这个方法
 	   	 	public void handleMessage(Message msg){
 		   		super.handleMessage(msg);	   
-		   		switch(viewpagerindex)
+		   		switch(msg.what)
 		   		{
 		   			/*case 0:
 		   			{
@@ -278,10 +278,31 @@ public class StationViewPagerActivity extends Activity implements Runnable{
 		   		
 		   			case 0:
 		   			
-		   				DataAccess.GetStations(DataAccess.clientid);		   				
+		   			
+		   				
+		   				LoginActivity.xianChengChi.execute(new Runnable() {
+							
+							@Override
+							public void run() {
+								
+								DataAccess.GetStations(DataAccess.clientid,handler);	
+								
+							}
+						});
+		   				
+		   				
+		   			
+					    break;
+					    
+		   			case 1:
+		   				
+		   			
 			   			lvrooms.setVisibility(View.GONE);
 			   			((BaseAdapter)adapter).notifyDataSetChanged();	
-					    lvrooms.setVisibility(View.VISIBLE);
+					    lvrooms.setVisibility(View.VISIBLE);				    
+						
+					   
+					    
 					    break;
 		   			  		
 		   	    }

@@ -15,16 +15,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
 import android.view.Window;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.Toast;
-//import your.packageHelloWorld.ControlGridView;
-//import your.packageHelloWorld.ImageAdapter1;
-//import your.packageHelloWorld.R;
-//import android.app.ActionBar;
 
 
 /**
@@ -38,7 +35,8 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 	public static String dbName="db.sqlite";//鏁版嵁搴撶殑鍚嶅瓧
 	private static String DATABASE_PATH="/data/data/enpc.software.solarweb/databases/";//鏁版嵁搴撳湪鎵嬫満閲岀殑璺緞
 
-
+    public static ProgressBar bar;
+	
 	   //     private GridView gridview; 
 
 	      //   private ImageAdapter1 adapter; 
@@ -86,6 +84,10 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
      
       requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.maintab);
+        
+
+     
+        
         if (android.os.Build.VERSION.SDK_INT > 9) 
         { 
           StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); 

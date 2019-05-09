@@ -22,6 +22,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.TabHost;
 import android.widget.Toast;
 
@@ -191,7 +192,7 @@ import android.widget.Toast;
 	        }      	
 	    }
 	 
-	    public static void GetStations(int clientid)
+	    public static void GetStations(int clientid,Handler handler)
 	    {
 	
 	    	 byte[] receive=null;
@@ -205,7 +206,7 @@ import android.widget.Toast;
 	    
 		    	if(receive!=null)
 		        {
-		    		PacketParse.parseStationData(receive);
+		    		PacketParse.parseStationData(receive,handler);
 		        }			
 	    }
 
@@ -229,18 +230,14 @@ import android.widget.Toast;
 			
 	    }
 	    */
-	    public static void GetRoomsWithOverViewData(int stationid)
+	    public static void GetRoomsWithOverViewData(int stationid,Handler handler)
 	    {
 	    	
 	    	 byte[] receive=null;
 	    	 
 		    	try {
 					 receive=SendAndReceive(RequestEntity.getRoomsWithOverViewDataBytes(DataAccess.clientid,stationid));
-//					 StringBuffer sb=new StringBuffer();
-//					 for (int i = 0; i < receive.length; i++) {
-//						 sb.append(receive[i]);
-//					 }
-//					 System.out.println("我的数据："+sb.toString());
+
 				} catch (Exception e) {
 		 
 				//	throw new Exception(e.getMessage().toString());			
@@ -248,7 +245,7 @@ import android.widget.Toast;
 	    
 		    	  if(receive!=null)
 			        {
-			    	  PacketParse.parseRoomsWithOverViewData(receive);
+			    	  PacketParse.parseRoomsWithOverViewData(receive,handler);
 			        }
 		    	  
 		    	  byte[] receive2=null;
@@ -262,11 +259,11 @@ import android.widget.Toast;
 		    
 			    	  if(receive2!=null)
 				        {
-				    	  PacketParse.parseStationData(receive2);
+				    	  PacketParse.parseStationData(receive2,handler);
 				        }
-			
+//			
 	    }
-	    public static void GetEquipmentsWithOverViewData(int stationid,int roomid)
+	    public static void GetEquipmentsWithOverViewData(int stationid,int roomid,Handler handler)
 	    {
 	    	 byte[] receive=null;
 	    	 
@@ -285,7 +282,7 @@ import android.widget.Toast;
 	    
 		    	  if(receive!=null)
 			        {
-			    	  PacketParse.parseEquipmentsWithOverViewData(receive);
+			    	  PacketParse.parseEquipmentsWithOverViewData(receive,handler);
 			        }
 			
 	    }
@@ -602,6 +599,7 @@ import android.widget.Toast;
 	    		sb.append(receive[i]);
 			}
 	    	//System.out.println("数据:"+sb.toString());
+	    	Log.e("DataAccess", sb.toString());
 	    	
 	    	if(receive!=null)
 	    	{
@@ -770,7 +768,7 @@ import android.widget.Toast;
 		  return  (~sum)&0xffff;	   
 	   }
 	   
-	    public static void GetRealTimeAnalogSignals(int stationid,int roomid,int equipmentid)
+	    public static void GetRealTimeAnalogSignals(int stationid,int roomid,int equipmentid,Handler handler)
 	    {
     	    byte[] receive=null;
     	 
@@ -782,12 +780,12 @@ import android.widget.Toast;
     
 	    	if(receive!=null)
 		    {
-		    	 PacketParse.parseRealTimeAnalogSignals(receive);
+		    	 PacketParse.parseRealTimeAnalogSignals(receive,handler);
 		    }
 			
 	    }
 	    
-	    public static void GetRealTimeSwitchSignals(int stationid,int roomid,int equipmentid)
+	    public static void GetRealTimeSwitchSignals(int stationid,int roomid,int equipmentid,Handler handler)
 	    {
     	    byte[] receive=null;
 	    	 
@@ -799,11 +797,11 @@ import android.widget.Toast;
     
 	    	if(receive!=null)
 		    {
-		    	 PacketParse.parseRealTimeSwitchSignals(receive);
+		    	 PacketParse.parseRealTimeSwitchSignals(receive,handler);
 		    }	
 	    }
 	    
-	    public static void GetEquipmentActiveAlarm(int stationid,int roomid,int equipmentid)
+	    public static void GetEquipmentActiveAlarm(int stationid,int roomid,int equipmentid,Handler handler)
 	    {
 	    	byte[] receive=null;
 		    	 
@@ -815,11 +813,11 @@ import android.widget.Toast;
 	    
 		    if(receive!=null)
 			{
-			     PacketParse.ParseEquipmentAliveEvents(receive);
+			     PacketParse.ParseEquipmentAliveEvents(receive,handler);
 			}	
 	    }
 	    
-	    public static void GetEquipmentCommand(int stationid,int roomid,int equipmentid)
+	    public static void GetEquipmentCommand(int stationid,int roomid,int equipmentid,Handler handler)
 	    {
 	    	byte[] receive=null;
 		    	
@@ -833,7 +831,7 @@ import android.widget.Toast;
 	    
 		    if(receive!=null)
 			{
-			   PacketParse.ParseEquipmentCommand(receive);
+			   PacketParse.ParseEquipmentCommand(receive,handler);
 			   
 			}	
 	    }

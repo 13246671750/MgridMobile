@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -57,6 +59,9 @@ public class LoginActivity extends Activity {
 	String cardNumStr;
 	String passwordStr;
 	ProgressBar progressbar;
+	
+	public static ExecutorService xianChengChi = Executors.newCachedThreadPool();
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -209,8 +214,8 @@ public class LoginActivity extends Activity {
 							msg.obj = longinstatus;
 							handler.sendMessage(msg);
 
-							Thread.sleep(500);
-							DataAccess.GetStations(rtn);
+//							Thread.sleep(500);
+//							DataAccess.GetStations(rtn);
 
 							// µÇÂ½³É¹¦
 							int longinstatus1 = 2;

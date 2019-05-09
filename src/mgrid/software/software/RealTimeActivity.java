@@ -363,13 +363,13 @@ import android.widget.TextView;
 	    		   	    }
 	    		        bQuery=false;
 	    		        if(pageindex ==0){
-	            	 	DataAccess.GetRealTimeAnalogSignals(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid);	
+	            	 	DataAccess.GetRealTimeAnalogSignals(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid,handler);	
 	    		        }
 	    		        if(pageindex ==1){
-		            	 	DataAccess.GetRealTimeSwitchSignals(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid);	
+		            	 	DataAccess.GetRealTimeSwitchSignals(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid,handler);	
 		    		        }
 	    		        if(pageindex ==2){
-		            	 	   DataAccess.GetEquipmentActiveAlarm(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid);	
+		            	 	   DataAccess.GetEquipmentActiveAlarm(DataAccess.stationid,DataAccess.roomid,DataAccess.equipmentid,handler);	
 		    		        }  	    		        
 	            	 	handler.sendEmptyMessage(0);
 	            	 	

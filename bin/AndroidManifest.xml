@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mgrid.software.software"
     android:versionCode="1"
-    android:versionName="1.1" 
+    android:versionName="1.3" 
     
     >
 
@@ -10,9 +10,10 @@
          android:targetSdkVersion="21"/>
 
     <application
-        android:icon="@drawable/ic_jiqiren"
+        android:name="mgrid.software.software.crash.MyApplication"
+        android:icon="@drawable/yidunloge"
         android:label="Monitor"
-        android:logo="@drawable/ic_jiqiren"
+        android:logo="@drawable/yidunloge"
         android:allowBackup="false">"
     
      <activity

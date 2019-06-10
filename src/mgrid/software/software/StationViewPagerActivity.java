@@ -168,6 +168,7 @@ public class StationViewPagerActivity extends Activity implements Runnable{
 					int id_qy=(int) DataAccess.parents.get(position).get("id");
 					
 					data=DataAccess.parentMap.get(id_qy);
+
 								
 				  	setAdapter(data);
 				

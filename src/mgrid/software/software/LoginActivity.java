@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -35,6 +36,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import mgrid.software.software.crash.DialogUtils;
+import mgrid.software.software.crash.MyApplication;
 
 public class LoginActivity extends Activity {
 	/*
@@ -59,8 +62,34 @@ public class LoginActivity extends Activity {
 	String cardNumStr;
 	String passwordStr;
 	ProgressBar progressbar;
+	public static Context context = null;
 	
 	public static ExecutorService xianChengChi = Executors.newCachedThreadPool();
+	
+	
+	public static Handler handlers = new Handler() {
+
+		public void handleMessage(Message msg) {
+
+			Object obj = msg.obj;
+			
+			switch (msg.what) {
+			
+			
+			case 1:
+
+				
+				DialogUtils.getDialog().showDialog(context, "发送异常,程序停止运行,请查看日志", "日志详细："+(String)obj);
+				
+				
+				break;
+
+			}
+
+		};
+
+	};
+
 	
 
 	/** Called when the activity is first created. */
@@ -70,6 +99,9 @@ public class LoginActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		DataAccess.Init();
 		boolean dbExist = checkDataBase();
+		
+		
+		
 		if (dbExist) {
 
 		} else {// 不存在就把raw里的数据库写入手机
@@ -86,6 +118,7 @@ public class LoginActivity extends Activity {
 
 		SystemSetting.ServerPort = GetSettings("SERVERPORT");
 		setContentView(R.layout.loginlayout);
+		context=this;
 		if (android.os.Build.VERSION.SDK_INT > 9) {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 			StrictMode.setThreadPolicy(policy);
@@ -95,6 +128,8 @@ public class LoginActivity extends Activity {
 					new StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects().penaltyLog().penaltyDeath().build());
 		}
 
+		
+		
 		progressbar = (ProgressBar) findViewById(R.id.progressBar1);
 		progressbar.setVisibility(View.INVISIBLE);
 		cardNumAuto = (AutoCompleteTextView) findViewById(R.id.cardNumAuto);
@@ -157,6 +192,9 @@ public class LoginActivity extends Activity {
 		logBT.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				
+			
+				
 				progressbar.setVisibility(View.VISIBLE);
 
 				SystemSetting.ServerIp = serverip.getText().toString();

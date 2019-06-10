@@ -710,7 +710,7 @@ public class PacketParse {
 			int id = BitConverter.getInt(buffer, index);
 			index = index + 4;
 			int len = BitConverter.getInt(buffer, index);
-			index = index + 4;
+			index = index + 4; 
 
 			String name = BitConverter.getUTF8String(buffer, index, len);
 
